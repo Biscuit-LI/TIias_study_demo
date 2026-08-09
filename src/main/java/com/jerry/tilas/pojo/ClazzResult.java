@@ -1,0 +1,15 @@
+package com.jerry.tilas.pojo;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ClazzResult<T> {
+    private Long total;
+    private List<T> rows;
+}

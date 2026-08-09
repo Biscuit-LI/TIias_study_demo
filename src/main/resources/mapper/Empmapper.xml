@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jerry.tilas.mapper.Empmapper">
+    <select id="getEmps" resultType="com.jerry.tilas.pojo.Emp">
+        select emp.*,dept.name deptName from emp left join dept on emp.dept_id=dept.id
+        <where>
+            <if test="name!=null and name!=''">
+                emp.name like concat ('%',#{name},'%')
+            </if>
+            <if test="gender!=null">
+                and emp.gender=#{gender}
+            </if>
+            <if test="begin!=null and end!=null">
+                and emp.entry_date between #{begin} and #{end}
+            </if>
+        </where>
+        order by emp.entry_date desc
+    </select>
+
+    <delete id="deleteEmp">
+        delete from emp
+        <where>
+            <foreach collection="ids" item="id" separator=" ">
+                or id=#{id}
+            </foreach>
+        </where>
+    </delete>
+
+    <update id="updateEmp">
+        update emp
+        <set>
+            <if test="username!=null and username!=''">username=#{username},</if>
+            <if test="password!=null and password!=''">password=#{password},</if>
+            <if test="name!=null and name!=''">name=#{name},</if>
+            <if test="gender!=null">gender=#{gender},</if>
+            <if test="phone!=null and phone!=''">phone=#{phone},</if>
+            <if test="job!=null">job=#{job},</if>
+            <if test="salary!=null and salary!=''">salary=#{salary},</if>
+            <if test="image!=null and image!=''">image=#{image},</if>
+            <if test="entryDate!=null">entry_date=#{entryDate},</if>
+            <if test="deptId!=null">dept_id=#{deptId},</if>
+            <if test="updateTime!=null">update_time=#{updateTime}</if>
+        </set>
+        where id=#{id}
+    </update>
+</mapper>

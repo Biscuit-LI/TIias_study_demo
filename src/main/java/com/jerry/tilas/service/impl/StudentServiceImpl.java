@@ -1,0 +1,15 @@
+package com.jerry.tilas.service.impl;
+
+import com.jerry.tilas.mapper.StudentMapper;
+import com.jerry.tilas.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class StudentServiceImpl implements StudentService {
+    @Autowired
+    private StudentMapper studentMapper;
+
+
+
+}
