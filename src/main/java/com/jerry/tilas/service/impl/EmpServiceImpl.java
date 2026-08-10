@@ -4,11 +4,9 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.jerry.tilas.mapper.EmpExprmapper;
 import com.jerry.tilas.mapper.Empmapper;
-import com.jerry.tilas.pojo.Emp;
-import com.jerry.tilas.pojo.EmpExpr;
-import com.jerry.tilas.pojo.EmpQuaryParam;
-import com.jerry.tilas.pojo.EmpResult;
+import com.jerry.tilas.pojo.*;
 import com.jerry.tilas.service.EmpService;
+import com.jerry.tilas.util.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +16,9 @@ import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class EmpServiceImpl implements EmpService {
@@ -94,6 +94,21 @@ public class EmpServiceImpl implements EmpService {
             exprList.forEach(expr->{expr.setEmpId(emp.getId());});
             empExprmapper.addEmp(exprList);
         }
+    }
+
+    @Override
+    public LoginInfo empLogin(Emp emp) {
+        Emp selectemp=empmapper.getEmpByNameAndPassword(emp);
+
+        if(selectemp!=null){
+            Map<String,Object> claim=new HashMap<>();
+            claim.put("id",selectemp.getId());
+            claim.put("username",selectemp.getUsername());
+            String token= JwtUtils.generateToken(claim);
+            return new LoginInfo(selectemp.getId(),selectemp.getUsername(),selectemp.getName(),token);
+        }
+
+        return null;
     }
 
 

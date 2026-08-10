@@ -3,6 +3,7 @@ package com.jerry.tilas.service;
 import com.jerry.tilas.pojo.Emp;
 import com.jerry.tilas.pojo.EmpQuaryParam;
 import com.jerry.tilas.pojo.EmpResult;
+import com.jerry.tilas.pojo.LoginInfo;
 
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface EmpService {
     void deleteEmp(List<Integer> ids);
 
     void updateEmp(Emp emp);
+
+    LoginInfo empLogin(Emp emp);
 }
