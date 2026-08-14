@@ -1,5 +1,6 @@
 package com.jerry.tilas.controller;
 
+import com.jerry.tilas.anno.LogOperation;
 import com.jerry.tilas.mapper.Deptmapper;
 import com.jerry.tilas.pojo.Dept;
 import com.jerry.tilas.pojo.Result;
@@ -18,6 +19,7 @@ public class DeptController {
     DeptService deptService;
 
     //获取全部部门
+    @LogOperation
     @GetMapping
     public Result getDepts(){
         log.info("获取全部部门信息");
@@ -25,6 +27,7 @@ public class DeptController {
     }
 
     //删除单个部门
+    @LogOperation
     @DeleteMapping
     public Result deleteDept(@RequestParam("id")Integer id){
         log.info("删除id：{}的部门",id);
@@ -33,6 +36,7 @@ public class DeptController {
     }
 
     //添加单个部门
+    @LogOperation
     @PostMapping
     public Result addDept(@RequestBody Dept dept){
         log.info("添加部门：{}",dept.getName());
@@ -41,6 +45,7 @@ public class DeptController {
     }
 
     //更新单个部门
+    @LogOperation
     @PutMapping
     public Result updateDept(@RequestBody Dept dept){
         log.info("更新id:{}部门为：{}",dept.getId(),dept.getName());

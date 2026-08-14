@@ -2,6 +2,7 @@ package com.jerry.tilas.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.jerry.tilas.anno.LogOperation;
 import com.jerry.tilas.mapper.ClazzMapper;
 import com.jerry.tilas.pojo.Clazz;
 import com.jerry.tilas.pojo.ClazzQueryParam;
@@ -26,6 +27,7 @@ public class ClazzServiceImpl implements ClazzService {
         clazzMapper.addClazz(clazz);
     }
 
+//    @LogOperation
     @Override
     public ClazzResult<Clazz> getClazz(ClazzQueryParam param) {
         PageHelper.startPage(param.getPage(),param.getPageSize());
