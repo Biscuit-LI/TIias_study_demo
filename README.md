@@ -8,3 +8,6 @@ Interceptor拦截器（登录外拦截）
 AOP初步demo（耗时计算）
 
 8月12日 AOP->通知类型 通知顺序 AOP基础
+
+8月13日 AOP切入点表达式->execution(范围) @annotation(自定义注解)
+AOP应用获取使用信息，JWT令牌->解析信息（AOP应用）
