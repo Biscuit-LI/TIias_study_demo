@@ -11,3 +11,5 @@ AOP初步demo（耗时计算）
 
 8月13日 AOP切入点表达式->execution(范围) @annotation(自定义注解)
 AOP应用获取使用信息，JWT令牌->解析信息（AOP应用）
+
+8月15日 日志接口->前端显示
