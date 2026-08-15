@@ -14,4 +14,5 @@ public class OperateLog {
     private String methodParams;
     private String returnValue;
     private Long costTime;
+    private String operateEmpName;
 }

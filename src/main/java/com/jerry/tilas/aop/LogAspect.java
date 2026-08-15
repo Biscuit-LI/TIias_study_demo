@@ -49,11 +49,11 @@ public class LogAspect {
         operateLog.setMethodName(pjp.getSignature().getName());
         operateLog.setMethodParams(Arrays.toString(pjp.getArgs()));
         operateLog.setCostTime(costTime);
-
+//        operateLog.setReturnValue(result.toString());
         try {
             operateLog.setReturnValue(objectMapper.writeValueAsString(result));
         } catch (Exception e) {
-            operateLog.setReturnValue("序列化失败");
+            operateLog.setReturnValue("数据过长，已隐藏");
         }
 
         // 保存到数据库
