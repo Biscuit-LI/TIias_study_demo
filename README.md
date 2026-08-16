@@ -13,3 +13,7 @@ AOP初步demo（耗时计算）
 AOP应用获取使用信息，JWT令牌->解析信息（AOP应用）
 
 8月15日 日志接口->前端显示
+ 
+8月16日 springboot->配置优先级（java启动，控制台） Bean管理单例，多例 第三方Bean->@Bean
+起步依赖 起步依赖管理 自动配置两种->1.导入依赖，组件扫描，启动层->componentscan（{..}） 2.import导入（方法类，config，接口传递数组）
+自编写stater起步依赖（阿里云OSS文件上传）
